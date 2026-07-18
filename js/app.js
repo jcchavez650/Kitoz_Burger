@@ -178,6 +178,28 @@
     return msg;
   }
 
+  // Save the order to the kitchen dashboard backend (PocketBase). No-op if
+  // CONFIG.ordersApi is empty. Fire-and-forget so it never blocks WhatsApp.
+  function submitToKitchen(name, phone) {
+    const api = (CONFIG.ordersApi || "").replace(/\/$/, "");
+    if (!api) return;
+    const payload = {
+      items: Object.values(cart).map((i) => ({ name: i.name, qty: i.qty, price: i.price })),
+      customer_name: name,
+      customer_phone: phone,
+      notes: $("#orderNotes").value.trim(),
+      total: cartTotal(),
+      status: "new"
+    };
+    try {
+      fetch(`${api}/api/collections/orders/records`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).catch(() => {});
+    } catch (e) {}
+  }
+
   function flagInvalid(el, bad) {
     el.classList.toggle("invalid", bad);
     if (bad) el.focus();
@@ -205,6 +227,11 @@
     }
 
     saveCust(name, phone);
+
+    // Hybrid: also save the order to the kitchen dashboard (if configured).
+    // Fire-and-forget — WhatsApp still happens even if this fails.
+    submitToKitchen(name, phone);
+
     const text = encodeURIComponent(buildOrderText(name, phone));
     const url = CONFIG.orderMethod === "sms"
       ? `sms:${CONFIG.phone}?&body=${text}`

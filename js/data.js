@@ -18,6 +18,10 @@ window.CONFIG = {
   phone: "+14088492949",       // WhatsApp order number
   orderMethod: "whatsapp",     // "whatsapp" or "sms"
 
+  /* Kitchen dashboard backend (PocketBase on Railway). When set, each order is
+     ALSO saved to the kitchen queue (hybrid). Leave "" for WhatsApp only. */
+  ordersApi: "",               // e.g. "https://kitoz-kitchen-production.up.railway.app"
+
   currency: "$",
 
   hours: [
