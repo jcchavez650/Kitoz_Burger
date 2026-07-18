@@ -92,14 +92,9 @@ img { max-width: 100%; display: block; }
 
 .brand { display: flex; align-items: center; gap: .7rem; }
 .brand-mark {
-  position: relative; width: 40px; height: 40px; border-radius: 11px;
-  background: var(--grad); display: grid; place-items: center;
-  box-shadow: 0 6px 18px -6px rgba(255,122,24,.7);
+  width: 40px; height: 40px; display: block; object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(255,122,24,.35));
 }
-.brand-mark .brand-k, .brand-mark .brand-b {
-  font-family: var(--font-head); font-weight: 900; font-size: 1.05rem; color: #14100a; line-height: 1;
-}
-.brand-mark .brand-b { margin-left: -3px; }
 .brand-text { font-family: var(--font-head); font-weight: 900; font-size: 1.05rem; letter-spacing: .04em; line-height: 1; }
 .brand-text span { display: block; font-size: .62rem; letter-spacing: .42em; color: var(--orange-2); font-weight: 700; }
 
