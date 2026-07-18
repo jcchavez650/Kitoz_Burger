@@ -20,7 +20,7 @@ window.CONFIG = {
 
   /* Kitchen dashboard backend (PocketBase on Railway). When set, each order is
      ALSO saved to the kitchen queue (hybrid). Leave "" for WhatsApp only. */
-  ordersApi: "",               // e.g. "https://kitoz-kitchen-production.up.railway.app"
+  ordersApi: "https://kitoz-kitchen-production.up.railway.app",
 
   currency: "$",
 
