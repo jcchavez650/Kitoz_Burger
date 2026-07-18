@@ -15,7 +15,7 @@ window.CONFIG = {
   /* ------------------------------------------------------------------------
      ⚠️  REQUIRED: your WhatsApp / SMS order number (international format).
      ---------------------------------------------------------------------- */
-  phone: "+14088492949",       // WhatsApp order number
+  phone: "+16693007607",       // WhatsApp order number
   orderMethod: "whatsapp",     // "whatsapp" or "sms"
 
   /* Kitchen dashboard backend (PocketBase on Railway). When set, each order is
